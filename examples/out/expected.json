@@ -1,0 +1,149 @@
+{
+  "tool": "claude-bughunter-trigger-budget",
+  "version": "1.0.0",
+  "skills_dir": "examples/in/skills",
+  "limit": 1024,
+  "min_token_len": 3,
+  "at_risk_headroom": 32,
+  "carve_out": [],
+  "summary": {
+    "skills_scanned": 4,
+    "status_counts": {
+      "truncated-token-loss": 1,
+      "ok": 1,
+      "over-limit-unreachable": 1,
+      "at-risk": 1
+    },
+    "over_limit": 2,
+    "installer_truncated": 1,
+    "at_risk": 1,
+    "skills_losing_high_signal": 1,
+    "total_lost_high_signal": 4,
+    "carve_out_skills_losing": 0,
+    "unintentional_skills_losing": 1,
+    "min_headroom": -166,
+    "min_headroom_skill": "delta-late",
+    "max_utf8_char_divergence": 2,
+    "verdict": "issues"
+  },
+  "skills": [
+    {
+      "name": "alpha-router",
+      "path": "alpha-router/SKILL.md",
+      "status": "truncated-token-loss",
+      "issues": [
+        "truncated at the word boundary; 4 high-signal trigger term(s) reachable only in the full description"
+      ],
+      "lost": [
+        {
+          "token": "WPScanProxy",
+          "offset": 1083,
+          "high_signal": true
+        },
+        {
+          "token": "kube-hunter",
+          "offset": 1095,
+          "high_signal": true
+        },
+        {
+          "token": "GCP→AWS",
+          "offset": 1107,
+          "high_signal": true
+        },
+        {
+          "token": "smtp_open_relay",
+          "offset": 1115,
+          "high_signal": true
+        }
+      ],
+      "description_len": 1130,
+      "utf8_len": 1132,
+      "headroom": -106,
+      "installer_reachable": true,
+      "installer_truncates": true,
+      "carve_out": false,
+      "lost_count": 4,
+      "lost_high_signal": 4,
+      "truncated_description": "Recon and exploitation routing for web targets, with detailed guidance on enumeration order, evidence capture and reporting conventions. Recon and exploitation routing for web targets, with detailed guidance on enumeration order, evidence capture and reporting conventions. Recon and exploitation routing for web targets, with detailed guidance on enumeration order, evidence capture and reporting conventions. Recon and exploitation routing for web targets, with detailed guidance on enumeration order, evidence capture and reporting conventions. Recon and exploitation routing for web targets, with detailed guidance on enumeration order, evidence capture and reporting conventions. Recon and exploitation routing for web targets, with detailed guidance on enumeration order, evidence capture and reporting conventions. Recon and exploitation routing for web targets, with detailed guidance on enumeration order, evidence capture and reporting conventions. Recon and exploitation routing for web targets, with detailed…"
+    },
+    {
+      "name": "beta-small",
+      "path": "beta-small/SKILL.md",
+      "status": "ok",
+      "issues": [],
+      "lost": [],
+      "description_len": 102,
+      "utf8_len": 102,
+      "headroom": 922,
+      "installer_reachable": true,
+      "installer_truncates": false,
+      "carve_out": false,
+      "lost_count": 0,
+      "lost_high_signal": 0,
+      "truncated_description": null
+    },
+    {
+      "name": "delta-late",
+      "path": "delta-late/SKILL.md",
+      "status": "over-limit-unreachable",
+      "issues": [
+        "description is 1190 chars (> limit 1024) but install.sh cannot reach it (line index 12), so the strict harness sees the over-length value"
+      ],
+      "lost": [],
+      "description_len": 1190,
+      "utf8_len": 1190,
+      "headroom": -166,
+      "installer_reachable": false,
+      "installer_truncates": false,
+      "carve_out": false,
+      "lost_count": 0,
+      "lost_high_signal": 0,
+      "truncated_description": null
+    },
+    {
+      "name": "gamma-cliff",
+      "path": "gamma-cliff/SKILL.md",
+      "status": "at-risk",
+      "issues": [
+        "28 chars of headroom before install.sh starts rewriting this copy"
+      ],
+      "lost": [],
+      "description_len": 996,
+      "utf8_len": 996,
+      "headroom": 28,
+      "installer_reachable": true,
+      "installer_truncates": false,
+      "carve_out": false,
+      "lost_count": 0,
+      "lost_high_signal": 0,
+      "truncated_description": null
+    }
+  ],
+  "sweep": [
+    {
+      "limit": 256,
+      "skills_losing_high_signal": 2,
+      "total_lost_high_signal": 5
+    },
+    {
+      "limit": 512,
+      "skills_losing_high_signal": 2,
+      "total_lost_high_signal": 5
+    },
+    {
+      "limit": 768,
+      "skills_losing_high_signal": 2,
+      "total_lost_high_signal": 5
+    },
+    {
+      "limit": 1024,
+      "skills_losing_high_signal": 1,
+      "total_lost_high_signal": 4
+    },
+    {
+      "limit": 2048,
+      "skills_losing_high_signal": 0,
+      "total_lost_high_signal": 0
+    }
+  ]
+}

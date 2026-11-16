@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Wrapper: run the audit with the system python3 (no venv, no deps).
+set -euo pipefail
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+exec python3 "$here/../cb_trigger_budget.py" "$@"

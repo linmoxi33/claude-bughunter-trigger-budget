@@ -1,0 +1,28 @@
+claude-bughunter-trigger-budget v1.0.0
+skills dir : examples/in/skills
+limit      : 1024 chars (install.sh Codex copy)
+scanned    : 4 SKILL.md
+over limit : 2   installer-truncated: 1   at-risk: 1
+token loss : 1 skill(s), 4 high-signal trigger term(s)
+min headroom: -166 chars (delta-late)
+utf8 vs codepoint divergence (max): 2
+
+[truncated-token-loss] alpha-router (alpha-router/SKILL.md)
+    - truncated at the word boundary; 4 high-signal trigger term(s) reachable only in the full description
+      lost@1083 high 'WPScanProxy'
+      lost@1095 high 'kube-hunter'
+      lost@1107 high 'GCP→AWS'
+      lost@1115 high 'smtp_open_relay'
+[over-limit-unreachable] delta-late (delta-late/SKILL.md)
+    - description is 1190 chars (> limit 1024) but install.sh cannot reach it (line index 12), so the strict harness sees the over-length value
+[at-risk] gamma-cliff (gamma-cliff/SKILL.md)
+    - 28 chars of headroom before install.sh starts rewriting this copy
+
+sweep (limit -> skills losing high-signal terms / terms lost):
+    256 -> 2 / 5
+    512 -> 2 / 5
+    768 -> 2 / 5
+   1024 -> 1 / 4
+   2048 -> 0 / 0
+
+verdict: issues
