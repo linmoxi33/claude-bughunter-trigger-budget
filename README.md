@@ -8,7 +8,7 @@ Why now: Claude-BugHunter's installer keeps the full `description` for Claude, H
 
 ## What the upstream is, and what it does not do
 
-[elementalsouls/Claude-BugHunter](https://github.com/elementalsouls/Claude-BugHunter) is a Claude Code skill bundle: 82 skills, 15 slash commands and 681 disclosed-report patterns. It already knows about the limit and enforces it:
+[elementalsouls/Claude-BugHunter](https://github.com/elementalsouls/Claude-BugHunter) is a Claude Code skill bundle: 82 skills (the audited snapshot contains 83 `SKILL.md` files), 15 slash commands and 681 disclosed-report patterns. It already knows about the limit and enforces it:
 
 - `docs/multi-harness.md` — "Codex is the strict parser … it hard-rejects descriptions > 1024 chars … so the installer **auto-truncates** any description > 1024 … only in the `~/.agents/skills` (Codex) copy — your `~/.claude`, `~/.hermes`, and `~/.gemini/config/skills` copies keep the full descriptions (incl. non-English trigger words)."
   <https://github.com/elementalsouls/Claude-BugHunter/blob/2cfe533df8efa2ced87c91299e1f62b88cb26108/docs/multi-harness.md#L63>
